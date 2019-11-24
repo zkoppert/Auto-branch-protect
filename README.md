@@ -6,6 +6,7 @@ A simple web service that listens for organization events to know when a reposit
 ## Usage
 - Install the following:
    - [Python](https://www.python.org/downloads/)
+      - `pip install -r requirements.txt`
    - [Flask](https://flask.palletsprojects.com/en/1.1.x/installation/#installation)
    - [ngrok](https://dashboard.ngrok.com/get-started)
 - Set GH_TOKEN as an environment variable with a value that corresponds to a GitHub Token (ie. `export GH_TOKEN=208923487234780287128091`)
