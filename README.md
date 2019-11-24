@@ -8,16 +8,16 @@ A simple web service that listens for organization events to know when a reposit
    - [ngrok](https://dashboard.ngrok.com/get-started)
 - Set GH_TOKEN as an environment variable with a value that corresponds to a GitHub Token (ie. `export GH_TOKEN=208923487234780287128091`)
 - Set the user value in app.py
-- Start the local web service via 'flask run --host=0.0.0.0 &'
-- Start the forwarding service via './ngrok http 5000 &'
-- Note the forwarding address (ie. https://cfe6d829.ngrok.io in the output of the ngrok application
+- Start the local web service via `flask run --host=0.0.0.0 &`
+- Start the forwarding service via `./ngrok http 5000 &`
+- Note the forwarding address (ie. https://cfe6d829.ngrok.io in the output of the ngrok application)
 - Set up a WebHook in the desired GitHub organization (ie. https://github.com/buzzmoto-org/REPO/settings/hooks)
    - Note that the Payload URL should match the forwarding address from ngrok (https://blahblah.ngrok.io)
    - Select the individual events radio button and check repositories
    - Content type should be application/json
    - Save the Webhook
 - Create a repository
-- See that an issue was created for the repo!
+- See that branch protection and an issue was created for the repo!
 
 ## Related Documentation
 - [GitHub APIv3](https://developer.github.com/v3/)
@@ -31,8 +31,8 @@ A simple web service that listens for organization events to know when a reposit
 - Flask
 - ngrok
 
-## Bugs and corner cases
-Note: Payloads are capped at 25 MB. If your event generates a larger payload, a webhook will not be fired. This may happen, for example, on a create event if many branches or tags are pushed at once. We suggest monitoring your payload size to ensure delivery. See [webhooks docs](https://developer.github.com/webhooks/)
+## Bugs and improvements
+- Payloads are capped at 25 MB. If your event generates a larger payload, a webhook will not be fired. This may happen, for example, on a create event if many branches or tags are pushed at once. We suggest monitoring your payload size to ensure delivery. See [webhooks docs](https://developer.github.com/webhooks/)
+- There is a 1 second Delay built in to the code which is NOT ideal. It seems the code is checking for the master branch before it is finished creating.
+- This could be done with AWS Lambda and an API Gateway
 
-## Notes
-This could be done with AWS Lambda and an API Gateway once my AWS account stops crashing.
