@@ -6,13 +6,18 @@ A simple web service that listens for organization events to know when a reposit
    - [Python](https://www.python.org/downloads/)
    - [Flask](https://flask.palletsprojects.com/en/1.1.x/installation/#installation)
    - [ngrok](https://dashboard.ngrok.com/get-started)
-- Start the local web service via 'flask run --host=0.0.0.0'
-- Start the forwarding service via './ngrok http 5000'
+- Set GH_TOKEN as an environment variable with a value that corresponds to a GitHub Token (ie. `export GH_TOKEN=208923487234780287128091`)
+- Set the user value in app.py
+- Start the local web service via 'flask run --host=0.0.0.0 &'
+- Start the forwarding service via './ngrok http 5000 &'
 - Note the forwarding address (ie. https://cfe6d829.ngrok.io in the output of the ngrok application
 - Set up a WebHook in the desired GitHub organization (ie. https://github.com/buzzmoto-org/REPO/settings/hooks)
    - Note that the Payload URL should match the forwarding address from ngrok (https://blahblah.ngrok.io)
    - Select the individual events radio button and check repositories
+   - Content type should be application/json
    - Save the Webhook
+- Create a repository
+- See that an issue was created for the repo!
 
 ## Related Documentation
 - [GitHub APIv3](https://developer.github.com/v3/)
