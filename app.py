@@ -1,8 +1,9 @@
 import json  # pylint: disable=import-error
 import os  # pylint: disable=import-error
 import time  # pylint: disable=import-error
-from flask import Flask, request  # pylint: disable=import-error
+
 import requests  # pylint: disable=import-error
+from flask import Flask, request  # pylint: disable=import-error
 
 app = Flask(__name__)
 
