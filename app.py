@@ -6,13 +6,13 @@ import requests  # pylint: disable=import-error
 from flask import Flask, request  # pylint: disable=import-error
 
 app = Flask(__name__)
-
+echo app
 
 @app.route("/", methods=["POST"])
 def webhook():
     # Store incoming json data from webhook
     payload = request.get_json()
-    user = "zkoppert"
+    user = "learnazcloud"
     cred = os.environ["GH_TOKEN"]
     if payload is None:
         print("POST was not formatted in JSON")
